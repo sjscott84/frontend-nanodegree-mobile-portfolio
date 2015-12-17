@@ -142,6 +142,8 @@ pizzaIngredients.crusts = [
   "Stuffed Crust"
 ];
 
+var items = [];
+
 // Name generator pulled from http://saturdaykid.com/usernames/generator.html
 // Capitalizes first letter of each word
 String.prototype.capitalize = function() {
@@ -414,6 +416,9 @@ var resizePizzas = function(size) {
       case "3":
         document.querySelector("#pizzaSize").innerHTML = "Large";
         return;
+      case "4":
+        document.querySelector("#pizzaSize").innerHTML = "X-Large";
+        return;
       default:
         console.log("bug in changeSliderLabel");
     }
@@ -427,7 +432,7 @@ var resizePizzas = function(size) {
     var windowWidth = document.querySelector("#randomPizzas").offsetWidth;
     var oldSize = oldWidth / windowWidth;
 
-    // TODO: change to 3 sizes? no more xl?
+    // Added an x-large pizza option
     // Changes the slider value to a percent width
     function sizeSwitcher (size) {
       switch(size) {
@@ -437,6 +442,8 @@ var resizePizzas = function(size) {
           return 0.3333;
         case "3":
           return 0.5;
+        case "4":
+          return 0.75;
         default:
           console.log("bug in sizeSwitcher");
       }
@@ -450,10 +457,28 @@ var resizePizzas = function(size) {
 
   // Iterates through pizza elements on the page and changes their widths
   function changePizzaSizes(size) {
+    switch(size) {
+      case "1":
+        newWidth = 25;
+        break;
+      case "2":
+        newWidth = 33.3;
+        break;
+      case "3":
+        newWidth = 50;
+        break;
+      case "4":
+        newWidth = 75;
+        break;
+      default:
+        console.log("bug in sizeSwitcher");
+    }
+
+    var pizzas = document.querySelectorAll(".randomPizzaContainer");
+
     for (var i = 0; i < document.querySelectorAll(".randomPizzaContainer").length; i++) {
-      var dx = determineDx(document.querySelectorAll(".randomPizzaContainer")[i], size);
-      var newwidth = (document.querySelectorAll(".randomPizzaContainer")[i].offsetWidth + dx) + 'px';
-      document.querySelectorAll(".randomPizzaContainer")[i].style.width = newwidth;
+      //var dx = determineDx(document.querySelectorAll(".randomPizzaContainer")[i], size);
+     pizzas[i].style.width = newWidth + "%";
     }
   }
 
@@ -499,13 +524,25 @@ function logAverageFrame(times) {   // times is the array of User Timing measure
 
 // Moves the sliding background pizzas based on scroll position
 function updatePositions() {
+
+  //Put .mover into own layer
   frame++;
   window.performance.mark("mark_start_frame");
 
-  var items = document.querySelectorAll('.mover');
+  //var items = document.querySelectorAll('.mover');
+
+  //should this be requestAnimateFram??
+  
+  var scroll = document.body.scrollTop;
+  //var phase = Math.sin(document.body.scrollTop / 1250);
+
   for (var i = 0; i < items.length; i++) {
-    var phase = Math.sin((document.body.scrollTop / 1250) + (i % 5));
+    //scrollTop triggers layout
+    //var smoothScroll = i % 5
+    var phase = Math.sin((scroll / 1250) + (i % 5));
+    //this than changes the style
     items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
+
   }
 
   // User Timing API to the rescue again. Seriously, it's worth learning.
@@ -534,6 +571,8 @@ document.addEventListener('DOMContentLoaded', function() {
     elem.basicLeft = (i % cols) * s;
     elem.style.top = (Math.floor(i / cols) * s) + 'px';
     document.querySelector("#movingPizzas1").appendChild(elem);
+    items.push(elem);
   }
-  updatePositions();
+  //TODO: Why is updatePositions run on Dom load???
+  //updatePositions();
 });
