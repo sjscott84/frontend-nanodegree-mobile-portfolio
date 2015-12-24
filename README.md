@@ -18,6 +18,7 @@ No installation needed simply go to http://sjscott84.github.io/frontend-nanodegr
 * Updated google analytics info to ensure it loads async.
 * Changed file size for images profilepic.jpg and pizzeria.jpg so that they matched dimensions outlined in html file.
 * Optimized images using imageOptim tool.
+* Minified index.html using http://www.willpeavy.com/minifier/.
 
 
 ### views/js/main.js
