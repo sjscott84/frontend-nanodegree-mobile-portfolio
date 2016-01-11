@@ -23,6 +23,8 @@ No installation needed simply go to http://sjscott84.github.io/frontend-nanodegr
 
 ### views/js/main.js
 
+* Added 'use strict' to file.
+
 #### Updates made to optimize sliding pizzas
 
 * Changed items variable to a global array that gets created when the DOM loads.
@@ -34,13 +36,20 @@ No installation needed simply go to http://sjscott84.github.io/frontend-nanodegr
 * Changed the window.performance function to show the average of 60 frames instead of 10.
 * Resized pizza image to match what is shown on screen and used ImageOptim to optimize.
 * Reduced the number of columns and the number of pizzas being created.
+* Saved the items.length to a variable outside of the loop.
+* Moved elem varaible out of the foor loop in the anonymous function.
+* Amended elem.basicleft to elem.style.left due to use of transformX.
+* created movingPizza variable to hold the movingPizzas1 id.
 
 #### Updates made to optimize resizing pizzas
 
 * Added a fourth size for X-large pizzas.
+* In changeSliderLabel, changed the querySelector all to getElementById and made this a variable out side the switch case.
 * Changed to size to be a percentage (e.g. small is 25% and x-large to %75) of original image.
 * Elimated the determineDX function as it was no longer needed once resize was changed to percentages.
 * Changed pizzas variable to use document.getElementbyClassName as this is faster than querySelectorAll.
+* Moved pizzasDiv variable out of the for loop.
+* Changed the variables that hold elements(pizzaSize & pizzas) to global, so they don't have to be fetched when the function is called.
 
 ## Technical
 
