@@ -4,7 +4,7 @@ This project was to optimaze a provided website.
 
 ## Install
 
-No installation needed simply go to http://sjscott84.github.io/frontend-nanodegree-mobile-portfolio/
+No installation needed simply go to http://sjscott84.github.io/frontend-nanodegree-mobile-portfolio/dist/
 
 ## Updates Made
 
@@ -27,18 +27,22 @@ No installation needed simply go to http://sjscott84.github.io/frontend-nanodegr
 
 #### Updates made to optimize sliding pizzas
 
-* Changed items variable to a global array that gets created when the DOM loads.
+##### updatePositions function
+
 * Moved the document.body.scrollTop out of the for loop so it is only being called once per function call.
 * As there were only 5 numbers used for math.sin (0-4) I created a phaseArray variable to hold these figures so they do not need to be calculated each time the for loop runs.
 * Created a for loop to push math.sin number to phaseArray array.
 * Changed items.style.left to items.style.transform to eliminate some of the layout time.
-* Amended layout so sliding pizzas only render within the container, thus reducing the number of pizzas needed to be rendered with each scroll.
 * Changed the window.performance function to show the average of 60 frames instead of 10.
-* Resized pizza image to match what is shown on screen and used ImageOptim to optimize.
+
+##### On DOM load
+
+* Changed items variable to a global array that gets created when the DOM loads.
+* Resized pizza image to match what is shown on screen and used Gulp to optimize.
 * Reduced the number of pizzas being created.
-* Saved the items.length to a variable outside of the loop.
 * Moved elem varaible out of the foor loop in the anonymous function.
 * Amended elem.basicleft to elem.style.left due to use of transformX.
+* Amended CSS to use transform: translatez(0) and backface-visibility: hidden.
 * created movingPizza variable to hold the movingPizzas1 id.
 
 #### Updates made to optimize resizing pizzas
