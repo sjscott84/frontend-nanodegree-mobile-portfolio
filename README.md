@@ -17,8 +17,8 @@ No installation needed simply go to http://sjscott84.github.io/frontend-nanodegr
 * Removed Google Fonts API as impact made was not enough to justify extra load time, especially as the fonts were already specifed in the css.
 * Updated google analytics info to ensure it loads async.
 * Changed file size for images profilepic.jpg and pizzeria.jpg so that they matched dimensions outlined in html file.
-* Optimized images using imageOptim tool.
-* Minified index.html using http://www.willpeavy.com/minifier/.
+* Optimized images using Gulp.
+* Minified js and css files using Gulp.
 
 
 ### views/js/main.js
@@ -35,7 +35,7 @@ No installation needed simply go to http://sjscott84.github.io/frontend-nanodegr
 * Amended layout so sliding pizzas only render within the container, thus reducing the number of pizzas needed to be rendered with each scroll.
 * Changed the window.performance function to show the average of 60 frames instead of 10.
 * Resized pizza image to match what is shown on screen and used ImageOptim to optimize.
-* Reduced the number of columns and the number of pizzas being created.
+* Reduced the number of pizzas being created.
 * Saved the items.length to a variable outside of the loop.
 * Moved elem varaible out of the foor loop in the anonymous function.
 * Amended elem.basicleft to elem.style.left due to use of transformX.
